@@ -1,6 +1,8 @@
 import Functionality as func
 
+
 class ui_start:
+
     def main_start():
         print("1. Calculate degree of overlap between the coasters")
         print("2. exit")
@@ -14,12 +16,10 @@ class ui_start:
             precision_out = input("Enter Precision value for output range[1 to 5]:")
             print("...........calculating.................")
 # calculation
-       #     func.func_def_obj.cheers_cal_inc_1(radius, precision, precision_out)
+            func.func_def_obj.cheers_cal_inc_1(radius, precision, precision_out)
             print("Now we will calculate length")
-            #length = func.func_def_obj.cal_length()
-            #func.func_def_obj.round_intermediate = True
-            sin_val = func.func_def_obj.cal_sin(0.0)
-            print("The cos calculated is ", sin_val)
+            length = func.func_def_obj.cal_length()
+            print("The length val calculated is ", length)
         elif input_val == func.const_obj.oper_exit:
             print("User wants to exit the scenario")
         else:
