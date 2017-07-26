@@ -15,6 +15,9 @@ class ui_start:
             print("...........calculating.................")
 # calculation
             func.func_def_obj.cheers_cal_inc_1(radius, precision, precision_out)
+            print("Now we will calculate length")
+            func.func_def_obj.cal_length()
+            print("The length calculated is ", func.func_def_obj.cal_length())
         elif input_val == func.const_obj.oper_exit:
             print("User wants to exit the scenario")
         else:

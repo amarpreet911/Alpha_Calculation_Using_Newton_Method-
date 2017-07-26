@@ -7,5 +7,9 @@ class const:
         precision_ceil = "5"
         precision_output_floor = "1"
         precision_output_ceil = "5"
-        pi_precision_val = 1000000000
+        pi_precision_val = 1000
+        alpha_iteration = 80
+        cos_iteration = 25
+        sin_iteration = 80
+        straight_line_angle = 180
 const_obj = const()
