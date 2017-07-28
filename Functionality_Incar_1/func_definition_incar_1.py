@@ -1,4 +1,4 @@
-from Functionality_Incar_1.constants import const_obj
+from Functionality_Incar_1.constants_incar_1 import const_obj
 
 
 class func_def:
@@ -22,6 +22,7 @@ class func_def:
         #         (self.precision_out > const_obj.precision_output_ceil):
         #     print("Kindly help to enter the output precision value in range [1 to 5]")
             # ck if needed to assign the val to self
+        self.pi = self.cal_pi()
 
 # For calculating the value of pi
     def cal_pi(self):
@@ -43,9 +44,9 @@ class func_def:
     def cal_alpha(self):
         alpha = 1
         print("in cal_alpha")
-        # after 32 alpha_iterations the residue value comes 0 and derivative stops changing
+         # after 32 alpha_iterations the residue value tends to 0 and derivative stops changing
         for i in range(1, const_obj.alpha_iteration):
-            residue = alpha - self.cal_sin(alpha) - (self.cal_pi() / 2)
+            residue = alpha - self.cal_sin(alpha) - (self.pi / 2)
             derivative = (1 - self.cal_cos(alpha))
             alpha = alpha - (residue / derivative)
             if residue == 0:
@@ -81,8 +82,9 @@ class func_def:
     def cal_length(self):
         print("in cal_length")
         cos_val = self.cal_cos(self.cal_alpha()/2)
-        # print("the calculated cos after alpha, in cal_length is ", cos_val)
+        print("the calculated cos after alpha, in cal_length is________-fun1 ", cos_val)
         length_val = 2 * float(self.radius) * float(1-cos_val)
+        print("the length is comming ", length_val)
         self.round_out = True
         round_off_length = self.round_off_val(length_val)
         return round_off_length

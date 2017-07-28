@@ -7,47 +7,39 @@ class func_def:
     round_intermediate = False
     round_out = False
 
-    # def __init__(self):
-    #     self.pi = self.cal_pi()
-
     # This funtion to checks whether the input values provided exist within the range or not
     def cheers_cal_inc_2(self, radius, precision, precision_out):
         self.radius = radius
         self.precision_input = precision
         self.precision_out = precision_out
-        # if (self.radius < const_obj.radius_floor) or (self.radius > const_obj.radius_ceil):
-        #     print("Kindly help to enter radius value in range [1 to 5]")
-        # if (self.precision_input < const_obj.precision_floor) or (self.precision_input > const_obj.precision_ceil):
-        #     print("Kindly help to enter precision value in range [1 to 5]")
-        # if (self.precision_out < const_obj.precision_output_floor) or \
-        #         (self.precision_out > const_obj.precision_output_ceil):
-        #     print("Kindly help to enter the output precision value in range [1 to 5]")
+        if (self.radius < const_incar_2_obj.radius_floor) or (self.radius > const_incar_2_obj.radius_ceil):
+            print("Kindly help to enter radius value in range [1 to 5]")
+        if (self.precision_input < const_incar_2_obj.precision_floor) or (self.precision_input > const_incar_2_obj.precision_ceil):
+            print("Kindly help to enter precision value in range [1 to 5]")
+        if (self.precision_out < const_incar_2_obj.precision_output_floor) or \
+                (self.precision_out > const_incar_2_obj.precision_output_ceil):
+            print("Kindly help to enter the output precision value in range [1 to 5]")
         # ck if needed to assign the val to self
+        self.pi = self.cal_pi()
 
-    # For calculating the value of pi
-    # def cal_pi(self):
-    #     print("calculating pi.......")
-    #     pi_val = 0
-    #     sign = -1
-    #     n = 1
-    #     while n <= self.precision_pi:
-    #         sign = -1 * sign
-    #         pi_val = pi_val + (sign / n)
-    #         n = n + 2
-    #     print("val for pi is", pi_val)
-    #     self.round_intermediate = True
-    #     pi_final_val = self.round_off_val(4 * pi_val)
-    #     print("pi val is ", pi_final_val)
-    #     return pi_final_val
+# For calculating the value of pi
+    def cal_pi(self):
+        pi_val = lb.math.pi
+        self.round_intermediate = True
+        pi_final_val = self.round_off_val(pi_val)
+        print("pi val is ", pi_final_val)
+        return pi_final_val
 
-    # Alpha calculated with the help of Newton's Method x(n + 1) = x(n) - f(x(n)) / f'(x(n))
+ # Alpha calculated with the help of Newton's Method x(n + 1) = x(n) - f(x(n)) / f'(x(n))
     def cal_alpha(self):
         alpha = 1
-        print("in cal_alpha")
-        # after 32 alpha_iterations the residue value comes 0 and derivative stops changing
+        #print("in cal_alpha")
+        # after 32 alpha_iterations the residue value tends to 0 and derivative stops changing
         for i in range(1, const_incar_2_obj.alpha_iteration):
-            residue = alpha - lb.math.sin(alpha) - lb.math.pi/2
-            derivative = (1 - lb.math.cos(alpha))
+            self.round_intermediate = True
+            residue = alpha - self.round_off_val(lb.math.sin(alpha)) - self.pi/2
+            self.round_intermediate = True
+            derivative = (1 - self.round_off_val(lb.math.cos(alpha)))
             alpha = alpha - (residue / derivative)
             if residue == 0:
                 print("the val of i::::when we got residual as zero is ::::::: ", i)
@@ -59,7 +51,7 @@ class func_def:
         print("the val of alpha to go next or x  is ::::::::  ", alpha_round_off_val)
         return alpha_round_off_val  # 2.304129659127962
 
-    # This function round off's the value to the describes precision
+# This function round off's the value to the describes precision
     def round_off_val(self, pi_arg):
         prec = 1
         if self.round_intermediate:
@@ -78,48 +70,19 @@ class func_def:
         self.round_intermediate = False
         return pi_arg
 
-    # This function calculates the required length
+# This function calculates the required length
     def cal_length(self):
-        print("in cal_length")
-        cos_val = lb.math.cos(self.cal_alpha()/2)
-        # print("the calculated cos after alpha, in cal_length is ", cos_val)
+        self.round_intermediate = True
+        cos_val = (lb.math.cos(self.cal_alpha()/2))
         length_val = 2 * float(self.radius) * float(1-cos_val)
+        # print("the length is comming ", length_val)
         self.round_out = True
         round_off_length = self.round_off_val(length_val)
         return round_off_length
 
-    # cos(x) calculated with the help of Taylor Series
-    # def cal_cos(self, c_alpha):  # x_alpha is in radian
-    #     # print("entering cal_cos")
-    #     cos_series_sum = 1
-    #     temp_val_cos = 1
-    #     for i in range(1, const_obj.cos_iteration, +2):
-    #         temp_val_cos = temp_val_cos * (-1) * (c_alpha * c_alpha) / (i * (i + 1))
-    #         cos_series_sum = cos_series_sum + temp_val_cos
-    #     self.round_intermediate = True
-    #     cos_ser_numb = self.round_off_val(cos_series_sum)
-    #     # print("cos series numb is ", cos_ser_numb)
-    #     return cos_ser_numb
-
-    # sin(x) calculated with the help of Taylor Series
-    # def cal_sin(self, s_alpha):  # s_alpha is in radian
-    #     # print("entering cal_sin")
-    #     sin_series_sum = s_alpha
-    #     temp_val_sin = s_alpha
-    #     for i in range(2, const_obj.sin_iteration, +2):
-    #         a = temp_val_sin * (-1)
-    #         b = s_alpha * s_alpha
-    #         c = (i * (i + 1))
-    #         temp_val_sin = a * (b / c)  # temp_val_sin*(-1) * (s_alpha * s_alpha)/(i(i+1))
-    #         sin_series_sum = sin_series_sum + temp_val_sin
-    #     self.round_intermediate = True
-    #     sin_ser_numb = self.round_off_val(sin_series_sum)
-    #     # print("cos series numb is ", sin_ser_numb)
-    #     return sin_ser_numb  # nothing round off???cos done in alpha while call
-
     def degree_to_radian(self, degree):
         self.round_intermediate = True
-        return self.round_off_val(degree * (self.pi / const_incar_2_obj.straight_line_angle))
+        return self.round_off_val(degree * (lb.math.pi / const_incar_2_obj.straight_line_angle))
 
 
 func_def_obj_i_2 = func_def()
