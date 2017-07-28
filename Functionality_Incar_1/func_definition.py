@@ -1,4 +1,4 @@
-from Functionality.constants import const_obj
+from Functionality_Incar_1.constants import const_obj
 
 
 class func_def:
@@ -6,21 +6,21 @@ class func_def:
     round_intermediate = False
     round_out = False
 
-    def __init__(self):
-        self.pi = self.cal_pi()
+    # def __init__(self):
+    #     self.pi = self.cal_pi()
 
 # This funtion to checks whether the input values provided exist within the range or not
     def cheers_cal_inc_1(self, radius, precision, precision_out):
         self.radius = radius
-        self.precision = precision
+        self.precision_input = precision
         self.precision_out = precision_out
-        if (self.radius < const_obj.radius_floor) or (self.radius > const_obj.radius_ceil):
-            print("Kindly help to enter radius value in range [1 to 5]")
-        if (self.precision < const_obj.precision_floor) or (self.precision > const_obj.precision_ceil):
-            print("Kindly help to enter precision value in range [1 to 5]")
-        if (self.precision_out < const_obj.precision_output_floor) or \
-                (self.precision_out > const_obj.precision_output_ceil):
-            print("Kindly help to enter the output precision value in range [1 to 5]")
+        # if (self.radius < const_obj.radius_floor) or (self.radius > const_obj.radius_ceil):
+        #     print("Kindly help to enter radius value in range [1 to 5]")
+        # if (self.precision_input < const_obj.precision_floor) or (self.precision_input > const_obj.precision_ceil):
+        #     print("Kindly help to enter precision value in range [1 to 5]")
+        # if (self.precision_out < const_obj.precision_output_floor) or \
+        #         (self.precision_out > const_obj.precision_output_ceil):
+        #     print("Kindly help to enter the output precision value in range [1 to 5]")
             # ck if needed to assign the val to self
 
 # For calculating the value of pi
@@ -45,7 +45,7 @@ class func_def:
         print("in cal_alpha")
         # after 32 alpha_iterations the residue value comes 0 and derivative stops changing
         for i in range(1, const_obj.alpha_iteration):
-            residue = alpha - self.cal_sin(alpha) - (3.14159 / 2)
+            residue = alpha - self.cal_sin(alpha) - (self.cal_pi() / 2)
             derivative = (1 - self.cal_cos(alpha))
             alpha = alpha - (residue / derivative)
             if residue == 0:
@@ -62,10 +62,10 @@ class func_def:
     def round_off_val(self, pi_arg):
         prec = 1
         if self.round_intermediate:
-            for i in range(0, self.precision_pi):
+            for i in range(0, int(self.precision_input)):
                 prec = prec * 10
         elif self.round_out:
-            for i in range(0, self.precision_pi):
+            for i in range(0, int(self.precision_out)):
                 prec = prec * 10
         else:
             print("neither its is for intermediate nor output ")
@@ -89,7 +89,7 @@ class func_def:
 
 # cos(x) calculated with the help of Taylor Series
     def cal_cos(self, c_alpha):  # x_alpha is in radian
-        print("entering cal_cos")
+        # print("entering cal_cos")
         cos_series_sum = 1
         temp_val_cos = 1
         for i in range(1, const_obj.cos_iteration, +2):
@@ -97,12 +97,12 @@ class func_def:
             cos_series_sum = cos_series_sum + temp_val_cos
         self.round_intermediate = True
         cos_ser_numb = self.round_off_val(cos_series_sum)
-        print("cos series numb is ", cos_ser_numb)
+        # print("cos series numb is ", cos_ser_numb)
         return cos_ser_numb
 
 # sin(x) calculated with the help of Taylor Series
     def cal_sin(self, s_alpha):  # s_alpha is in radian
-        print("entering cal_sin")
+        # print("entering cal_sin")
         sin_series_sum = s_alpha
         temp_val_sin = s_alpha
         for i in range(2, const_obj.sin_iteration, +2):
@@ -113,7 +113,7 @@ class func_def:
             sin_series_sum = sin_series_sum + temp_val_sin
         self.round_intermediate = True
         sin_ser_numb = self.round_off_val(sin_series_sum)
-        print("cos series numb is ", sin_ser_numb)
+        # print("cos series numb is ", sin_ser_numb)
         return sin_ser_numb  # nothing round off???cos done in alpha while call
 
     def degree_to_radian(self, degree):

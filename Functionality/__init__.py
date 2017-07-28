@@ -1,2 +1,0 @@
-from Functionality.constants import const_obj
-from Functionality.func_definition import func_def_obj
