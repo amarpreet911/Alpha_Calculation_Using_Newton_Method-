@@ -12,13 +12,13 @@ class func_def:
         self.radius = radius
         self.precision_input = precision
         self.precision_out = precision_out
-        if (self.radius < const_incar_2_obj.radius_floor) or (self.radius > const_incar_2_obj.radius_ceil):
-            print("Kindly help to enter radius value in range [1 to 5]")
-        if (self.precision_input < const_incar_2_obj.precision_floor) or (self.precision_input > const_incar_2_obj.precision_ceil):
-            print("Kindly help to enter precision value in range [1 to 5]")
-        if (self.precision_out < const_incar_2_obj.precision_output_floor) or \
-                (self.precision_out > const_incar_2_obj.precision_output_ceil):
-            print("Kindly help to enter the output precision value in range [1 to 5]")
+        # if (self.radius < const_incar_2_obj.radius_floor) or (self.radius > const_incar_2_obj.radius_ceil):
+        #     print("Kindly help to enter radius value in range [1 to 10]")
+        # if (self.precision_input < const_incar_2_obj.precision_floor) or (self.precision_input > const_incar_2_obj.precision_ceil):
+        #     print("Kindly help to enter precision value in range [1 to 10]")
+        # if (self.precision_out < const_incar_2_obj.precision_output_floor) or \
+        #         (self.precision_out > const_incar_2_obj.precision_output_ceil):
+        #     print("Kindly help to enter the output precision value in range [1 to 10]")
         # ck if needed to assign the val to self
         self.pi = self.cal_pi()
 
@@ -75,10 +75,38 @@ class func_def:
         self.round_intermediate = True
         cos_val = (lb.math.cos(self.cal_alpha()/2))
         length_val = 2 * float(self.radius) * float(1-cos_val)
-        # print("the length is comming ", length_val)
+        # print("the length is comming ", length_val))
         self.round_out = True
         round_off_length = self.round_off_val(length_val)
+        self.form_xml(round_off_length)
         return round_off_length
+
+    def form_xml(self, length_result):
+        # create XML
+        data_file = "Cheers.xml"
+        root = lb.etree.Element('root')
+        root.append(lb.etree.Element('child'))
+        # another child with text
+        child = lb.etree.Element('child')
+        child.text = 'some text'
+        root.append(child)
+
+        # pretty string
+        s = lb.etree.tostring(root, pretty_print=True)
+       # lb.etree.ElementTree.w"Cheers_1.xml")
+        print (s)
+       #  data_file = "Cheers.xml"
+       #  root = lb.etree.Element('Incarnation_2')
+       #  lb.etree.tree = lb.etree.ElementTree(root)
+       #  name = lb.etree.Element('Length Value')
+       #  root.append(name)
+       #  name.text = length_result
+       #  root.set('For_Radius', self.radius)
+       #  print(lb.etree.tostring(root))
+       #  lb.etree..tree.write("Cheers_1.xml")
+       # # if lb.os.path.exists(data_file):
+
+
 
     def degree_to_radian(self, degree):
         self.round_intermediate = True

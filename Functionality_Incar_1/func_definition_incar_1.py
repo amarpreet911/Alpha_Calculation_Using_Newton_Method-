@@ -1,5 +1,5 @@
 from Functionality_Incar_1.constants_incar_1 import const_obj
-
+import Libraries as lb
 
 class func_def:
     precision_pi = const_obj.pi_precision_val
@@ -15,12 +15,12 @@ class func_def:
         self.precision_input = precision
         self.precision_out = precision_out
         # if (self.radius < const_obj.radius_floor) or (self.radius > const_obj.radius_ceil):
-        #     print("Kindly help to enter radius value in range [1 to 5]")
+        #     print("Kindly help to enter radius value in range [1 to 10]")
         # if (self.precision_input < const_obj.precision_floor) or (self.precision_input > const_obj.precision_ceil):
-        #     print("Kindly help to enter precision value in range [1 to 5]")
+        #     print("Kindly help to enter precision value in range [1 to 10]")
         # if (self.precision_out < const_obj.precision_output_floor) or \
         #         (self.precision_out > const_obj.precision_output_ceil):
-        #     print("Kindly help to enter the output precision value in range [1 to 5]")
+        #     print("Kindly help to enter the output precision value in range [1 to 10]")
             # ck if needed to assign the val to self
         self.pi = self.cal_pi()
 
@@ -34,9 +34,11 @@ class func_def:
             sign = -1 * sign
             pi_val = pi_val + (sign / n)
             n = n + 2
-        print("val for pi is", pi_val)
         self.round_intermediate = True
         pi_final_val = self.round_off_val(4 * pi_val)
+
+        # This is where the pdb debugger will start while calculating pi
+        # lb.pdb.set_trace()
         print("pi val is ", pi_final_val)
         return pi_final_val
 
@@ -81,10 +83,12 @@ class func_def:
 # This function calculates the required length
     def cal_length(self):
         print("in cal_length")
+        # Below mentioned command will allow us to debug at this point
+        # lb.pdb.set_trace()
         cos_val = self.cal_cos(self.cal_alpha()/2)
-        print("the calculated cos after alpha, in cal_length is________-fun1 ", cos_val)
+        #print("the calculated cos after alpha, in cal_length is________-fun1 ", cos_val)
         length_val = 2 * float(self.radius) * float(1-cos_val)
-        print("the length is comming ", length_val)
+        #print("the length is comming ", length_val)
         self.round_out = True
         round_off_length = self.round_off_val(length_val)
         return round_off_length
@@ -97,6 +101,7 @@ class func_def:
         for i in range(1, const_obj.cos_iteration, +2):
             temp_val_cos = temp_val_cos * (-1) * (c_alpha * c_alpha) / (i * (i + 1))
             cos_series_sum = cos_series_sum + temp_val_cos
+        # lb.pdb.set_trace()
         self.round_intermediate = True
         cos_ser_numb = self.round_off_val(cos_series_sum)
         # print("cos series numb is ", cos_ser_numb)
@@ -113,6 +118,7 @@ class func_def:
             c = (i * (i + 1))
             temp_val_sin = a * (b / c)  # temp_val_sin*(-1) * (s_alpha * s_alpha)/(i(i+1))
             sin_series_sum = sin_series_sum + temp_val_sin
+        # lb.pdb.set_trace()
         self.round_intermediate = True
         sin_ser_numb = self.round_off_val(sin_series_sum)
         # print("cos series numb is ", sin_ser_numb)
