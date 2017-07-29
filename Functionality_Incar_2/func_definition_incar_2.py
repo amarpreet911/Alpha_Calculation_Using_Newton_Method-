@@ -83,27 +83,29 @@ class func_def:
 
     def form_xml(self, length_result):
         # create XML
-        data_file = "Cheers.xml"
-        root = lb.etree.Element('root')
-        root.append(lb.etree.Element('child'))
-        # another child with text
-        child = lb.etree.Element('child')
-        child.text = 'some text'
-        root.append(child)
-
-        # pretty string
-        s = lb.etree.tostring(root, pretty_print=True)
-       # lb.etree.ElementTree.w"Cheers_1.xml")
-        print (s)
        #  data_file = "Cheers.xml"
-       #  root = lb.etree.Element('Incarnation_2')
-       #  lb.etree.tree = lb.etree.ElementTree(root)
-       #  name = lb.etree.Element('Length Value')
-       #  root.append(name)
-       #  name.text = length_result
-       #  root.set('For_Radius', self.radius)
-       #  print(lb.etree.tostring(root))
-       #  lb.etree..tree.write("Cheers_1.xml")
+       #  root = lb.etree.Element('root')
+       #  root.append(lb.etree.Element('child'))
+       #  # another child with text
+       #  child = lb.etree.Element('child')
+       #  child.text = 'some text'
+       #  root.append(child)
+       #
+       #  # pretty string
+       #  s = lb.etree.tostring(root)
+       # # lb.etree.ElementTree.w"Cheers_1.xml")
+       #  print(s)
+       #  lb.etree.ElementTree.write('File1.xml')
+
+        data_file = "Cheers.xml"
+        root = lb.etree.Element('Incarnation_2')
+        lb.etree.tree = lb.etree.ElementTree(root)
+        name = lb.etree.Element('Length Value')
+        root.append(name)
+        name.text = length_result
+        root.set('For_Radius', self.radius)
+        print(lb.etree.tostring(root))
+        lb.etree.tree.write("Cheers_1.xml")
        # # if lb.os.path.exists(data_file):
 
 
