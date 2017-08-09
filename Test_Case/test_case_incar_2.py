@@ -16,7 +16,7 @@ class test_case_incar_2:
     #intermediate calculation precision is the precision for intermediate calculations
     # while the output_calculation_precision is for the final output_precision
     intermediate_calculation_precision = 10
-    output_calculation_precision = 7
+    output_calculation_precision = 9
     length_data = []
     def impl_incr_2(self):
         #The loop will calculate the corresponding length for radius 1 to 5

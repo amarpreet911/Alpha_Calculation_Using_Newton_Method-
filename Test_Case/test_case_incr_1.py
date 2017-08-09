@@ -14,7 +14,7 @@ class test_case_incar_1:
     # while the output_calculation_precision is for the final output_precision
 
     intermediate_calculation_precision = 10
-    output_calculation_precision = 7
+    output_calculation_precision = 8
     length_data = []
     def impl_incar_1(self):
 
