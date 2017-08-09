@@ -6,6 +6,7 @@ class func_def:
     round_intermediate = False
     round_out = False
 
+
     # def __init__(self):
     #     self.pi = self.cal_pi()
 
@@ -122,7 +123,7 @@ class func_def:
         self.round_intermediate = True
         sin_ser_numb = self.round_off_val(sin_series_sum)
         # print("cos series numb is ", sin_ser_numb)
-        return sin_ser_numb  # nothing round off???cos done in alpha while call
+        return sin_ser_numb
 
     def degree_to_radian(self, degree):
         self.round_intermediate = True

@@ -82,8 +82,9 @@ class func_def:
         return round_off_length
 
     def form_xml(self):
+        print("xyz")
         # create XML
-        print("was used to print xml, kindly delete and Cheers.xml if you want to generate it again")
+        # print("was used to print xml, kindly delete and Cheers.xml if you want to generate it again")
         # data_file = "Cheers.xml"
         # if lb.os.path.exists(data_file) != True:
         #     tmp = open(data_file, 'a')
