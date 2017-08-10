@@ -12,12 +12,14 @@ from Libraries import math
 # In test cases involving alpha and length I have showed in the output that how residue f(x) turns zero after certain
 # iterations and thus f'(x) also stops changing helping us to converge Newton's method for our calculations.
 
-class test_case_incar_2:
-    #intermediate calculation precision is the precision for intermediate calculations
+
+class TestCaseIncar2:
+    # Intermediate calculation precision is the precision for intermediate calculations
     # while the output_calculation_precision is for the final output_precision
     intermediate_calculation_precision = 10
     output_calculation_precision = 9
     length_data = []
+
     def impl_incr_2(self):
         #The loop will calculate the corresponding length for radius 1 to 5
         for radius in range(1, 6):
@@ -45,7 +47,7 @@ class test_case_incar_2:
         func_def_obj_i_2.round_intermediate = True
         compute_cos = func_def_obj_i_2.round_off_val(calculated_cos - 0.7071067811865476)
         # # value < 1.0e-5 means value tends to be zero
-        if (compute_cos < 1.0e-5):
+        if compute_cos < 1.0e-5:
             print("Test case for cos(x) is PASSED with value:::::::::: ", calculated_cos, "\n")
         else:
             print("Sorry the test case for cos(x) has FAILED")
@@ -54,11 +56,10 @@ class test_case_incar_2:
         func_def_obj_i_2.round_intermediate = True
         compute_sin = func_def_obj_i_2.round_off_val(calculated_sin - 0.7071067811865475)
         # value < 1.0e-5 means value tends to be zero
-        if (compute_sin < 1.0e-5):
+        if compute_sin < 1.0e-5:
             print("Test case for sin(x) is PASSED with value:::::::::::::", calculated_sin, "\n")
         else:
             print("Sorry the test case for sin(x) has FAILED\n")
-
 
         # Alpha will be taken out for a value of which residue tends to be zero(shown in the output)
         # i.e f(x)-->0 and f'(x) doesn't change any more(Newtons Method: x(n+1) = x(n) - f(x)/f'(x))
@@ -69,7 +70,7 @@ class test_case_incar_2:
         compute_alpha = func_def_obj_i_2.round_off_val(calculated_alpha - 2.3098814600100572609)
 
         # value < 1.0e-5 means value tends to be zero
-        if (compute_alpha < 1.0e-5):
+        if compute_alpha < 1.0e-5:
             print("Test case for alpha is PASSED with value::::::::::: ", calculated_alpha, "\n")
         else:
             print("Sorry the test case for alpha has FAILED\n")
@@ -80,11 +81,11 @@ class test_case_incar_2:
         calculated_length = func_def_obj_i_2.cal_length()
         func_def_obj_i_2.round_intermediate = True
         compute_length = func_def_obj_i_2.round_off_val(calculated_length - 5.960272467004827907)
-        if (compute_length < 1.0e-5):
+        if compute_length < 1.0e-5:
             print("Test case for length is PASSED with value::::::::::::: ", calculated_length, "\n")
         else:
             print("Sorry the test case for length has FAILED")
         return calculated_length
 
-tc2_obj = test_case_incar_2()
+tc2_obj = TestCaseIncar2()
 tc2_obj.impl_incr_2()

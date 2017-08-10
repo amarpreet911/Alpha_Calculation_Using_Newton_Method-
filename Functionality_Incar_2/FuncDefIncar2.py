@@ -1,25 +1,17 @@
-from Functionality_Incar_2.constants_incar_2 import const_incar_2_obj
+from Functionality_Incar_2.ConstantsIncar2 import const_incar_2_obj
 import Libraries as lb
 
 
-class func_def:
+class FuncDefIncar2:
     precision_pi = const_incar_2_obj.pi_precision_val
     round_intermediate = False
     round_out = False
 
-    # This funtion to checks whether the input values provided exist within the range or not
+    # Initializing values
     def cheers_cal_inc_2(self, radius, precision, precision_out):
         self.radius = radius
         self.precision_input = precision
         self.precision_out = precision_out
-        # if (self.radius < const_incar_2_obj.radius_floor) or (self.radius > const_incar_2_obj.radius_ceil):
-        #     print("Kindly help to enter radius value in range [1 to 10]")
-        # if (self.precision_input < const_incar_2_obj.precision_floor) or (self.precision_input > const_incar_2_obj.precision_ceil):
-        #     print("Kindly help to enter precision value in range [1 to 10]")
-        # if (self.precision_out < const_incar_2_obj.precision_output_floor) or \
-        #         (self.precision_out > const_incar_2_obj.precision_output_ceil):
-        #     print("Kindly help to enter the output precision value in range [1 to 10]")
-        # ck if needed to assign the val to self
         self.pi = self.cal_pi()
 
 # For calculating the value of pi
@@ -30,10 +22,10 @@ class func_def:
         print("pi val is ", pi_final_val)
         return pi_final_val
 
- # Alpha calculated with the help of Newton's Method x(n + 1) = x(n) - f(x(n)) / f'(x(n))
+    # Alpha calculated with the help of Newton's Method x(n + 1) = x(n) - f(x(n)) / f'(x(n))
     def cal_alpha(self):
         alpha = 1
-        #print("in cal_alpha")
+        # print("in cal_alpha")
         # after 32 alpha_iterations the residue value tends to 0 and derivative stops changing
         for i in range(1, const_incar_2_obj.alpha_iteration):
             self.round_intermediate = True
@@ -78,44 +70,12 @@ class func_def:
         # print("the length is comming ", length_val))
         self.round_out = True
         round_off_length = self.round_off_val(length_val)
-        self.form_xml()
+        # commenting form_xml
+        # self.form_xml()
         return round_off_length
-
-    def form_xml(self):
-        print("xyz")
-        # create XML
-        # print("was used to print xml, kindly delete and Cheers.xml if you want to generate it again")
-        # data_file = "Cheers.xml"
-        # if lb.os.path.exists(data_file) != True:
-        #     tmp = open(data_file, 'a')
-        #     tmp.write("<list>Radius=1<\list>")
-        #     tmp.write("1.192054")
-        #     tmp.write("<list>Radius=2<\list>")
-        #     tmp.write("2.384108")
-        #     tmp.write("<list>Radius=3<\list>")
-        #     tmp.write("3.576163")
-        #
-        #     tmp.close()
-        # xmID = lb.etree.parse(data_file)
-        # root = xmID.getroot()
-        # print(root)
-
-
-        # root = lb.etree.Element('Incarnation_2')
-        # lb.etree.tree = lb.etree.ElementTree(root)
-        # name = lb.etree.Element('Length Value')
-        # root.append(name)
-        # name.text = length_result
-        # root.set('For_Radius', self.radius)
-        # print(lb.etree.tostring(root))
-        # lb.etree.tree.write("Cheers_1.xml")
-       # # if lb.os.path.exists(data_file):
-
-
 
     def degree_to_radian(self, degree):
         self.round_intermediate = True
         return self.round_off_val(degree * (lb.math.pi / const_incar_2_obj.straight_line_angle))
 
-
-func_def_obj_i_2 = func_def()
+func_def_obj_i_2 = FuncDefIncar2()

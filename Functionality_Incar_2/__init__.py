@@ -1,2 +1,2 @@
-from Functionality_Incar_2.func_definition_incar_2 import func_def_obj_i_2
-from Functionality_Incar_2.constants_incar_2 import const_incar_2_obj
+from Functionality_Incar_2.FuncDefIncar2 import func_def_obj_i_2
+from Functionality_Incar_2.ConstantsIncar2 import const_incar_2_obj

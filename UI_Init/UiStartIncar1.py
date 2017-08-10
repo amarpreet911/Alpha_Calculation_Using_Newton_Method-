@@ -1,15 +1,15 @@
 import Functionality_Incar_1 as func
 
 
-class ui_start_incar_1:
+class UiStartIncar1:
 
     def main_start(self):
         while True:
-             print("1. Calculate degree of overlap between the coasters")
-             print("2. exit")
-             input_val = input("Enter one of the given options")
+            print("1. Calculate degree of overlap between the coasters")
+            print("2. exit")
+            input_val = input("Enter one of the given options")
 
-             if input_val.isdigit():
+            if input_val.isdigit():
                 if input_val == func.const_obj.oper_calculate:
                     self.radius_precision_handling()
 
@@ -17,9 +17,9 @@ class ui_start_incar_1:
                     print("Thank you for using the software, BYE-BYE")
                     quit()
                 else:
-                     print("please select either value 1 or 2")
+                    print("please select either value 1 or 2")
 
-             else:
+            else:
                 self.error_handling(input_val)
 
     def radius_precision_handling(self):
@@ -61,7 +61,7 @@ class ui_start_incar_1:
         else:
             print("You cannot put a blank entry, Kindly help to put sme numeric value")
 
-ui_1_main_obj = ui_start_incar_1()
+ui_1_main_obj = UiStartIncar1()
 ui_1_main_obj.main_start()
 
 
